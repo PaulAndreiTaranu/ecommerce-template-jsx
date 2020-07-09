@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+<%- include('../includes/navigation.ejs') %>
+<div class="container-sm m-5 p-5 mx-auto">
+    <% if(products.length > 0) {%>
+        <ul class="list-group">
+            <% products.forEach(p => {%>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <p class="m-0">
+                    <%= p.productId.title%> 
+                    <span class="badge bg-primary rounded-pill"><%=p.quantity%></span>
+                </p>
+                <div>
+                    <!-- <form action="/cart-delete-item" method="POST">
+                        <input type="hidden" id="productId" name="productId" value="<%= p.productId._id %>" />
+                        <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+                        <button type="submit" class="btn btn-danger">Delete product</button>
+                    </form> -->
+                    <a href="/checkout" class="btn btn-primary">Order now!</a>
+                </div>
+            </li>
+            <%})%>
+        </ul>
+    <%} else {%>
+        <h1>No products in cart!</h1>
+    <%}%>
+</div>
+<!-- <form action="/create-order" method="POST" class="container-sm m-5 p-5 mx-auto d-flex justify-content-center align-items-center">
+    <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+    <button type="submit" class="btn btn-success">Complete Order!</button>
+</form> -->
+<%- include('../includes/end.ejs') %>

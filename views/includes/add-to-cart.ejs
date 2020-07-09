@@ -1,0 +1,10 @@
+<form action="/cart" method="POST">
+    <div class="mb-3">
+        <input type="hidden" id="productId" name="productId" value="<%= product._id %>" />
+    </div>
+    <a href="/products/<%= product._id %>" class="btn btn-secondary">Details</a>
+    <% if(isAuthenticated === true) {%>
+    <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+    <%}%>
+</form>

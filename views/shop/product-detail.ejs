@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+<%- include('../includes/navigation.ejs') %>
+<div class="container mx-auto m-3 p-3">
+    <h1 class="mb-4 text-center"><%= product.title %></h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col mx-auto">
+            <div class="card h-100">
+                <img
+                    src="<%= product.imgUrl %>"
+                    class="card-img-top"
+                    alt="product"
+                />
+                <div class="card-body">
+                    <h5 class="card-titlei mb-2"><%= product.title %></h5>
+                    <h6 class="card-subtitle mb-2">$<%= product.price %></h6>
+                    <p class="card-text"><%= product.description %></p>
+                </div>
+                <div class="card-body mx-auto">
+                    <%- include('../includes/add-to-cart.ejs') %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../includes/end.ejs') %>
+

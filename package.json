@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "A MVC Ecommerce Template",
     "main": "app.js",
+    "engines": {
+        "node": "v12.13.1"
+    },
     "scripts": {
         "start": "start http://localhost:3000 && nodemon app.js",
         "chromeDeb": "start http://localhost:3000 && node --inspect app.js"

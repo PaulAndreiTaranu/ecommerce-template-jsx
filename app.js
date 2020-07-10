@@ -32,8 +32,8 @@ const store = new MongoDbStore({
     collection: "sessions",
 });
 const csurfProtection = csurf();
-const privateKey = fs.readFileSync("server.key");
-const certificate = fs.readFileSync("server.cert");
+// const privateKey = fs.readFileSync("server.key");
+// const certificate = fs.readFileSync("server.cert");
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "images");
@@ -103,7 +103,8 @@ mongoose
         useUnifiedTopology: true,
     })
     .then((result) => {
-        https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.PORT || 3000);
+        // https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.PORT || 3000);
+        app.listen(process.env.PORT || 3000)
     })
     .catch((err) => {
         console.log(err);

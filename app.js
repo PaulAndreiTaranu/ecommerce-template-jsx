@@ -52,11 +52,11 @@ const fileFilter = (req, file, cb) => {
 
 app.set("view engine", "ejs");
 app.set("views", "views");
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(helmet());
 app.use(compression());
 // app.use(morgan("combined", { stream: accessLogStream }));
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("image"));
 app.use(session({ secret: "mySecret", resave: false, saveUninitialized: false, store: store }));
@@ -87,12 +87,12 @@ app.use((req, res, next) => {
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
+app.get("/500", errorController.get500);
 app.use(errorController.get404);
 app.use((error, req, res, next) => {
     res.status(500).render("500", {
         pageTitle: "Error!",
         path: "/500",
-        error: error,
         isAuthenticated: req.session.isLoggedIn,
     });
 });
@@ -104,7 +104,7 @@ mongoose
     })
     .then((result) => {
         // https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.PORT || 3000);
-        app.listen(process.env.PORT || 3000)
+        app.listen(process.env.PORT || 3000);
     })
     .catch((err) => {
         console.log(err);

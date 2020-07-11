@@ -1,6 +1,6 @@
 const Product = require("../models/product");
 const { validationResult } = require("express-validator");
-const fileHelper = require("../utils/file");
+// const fileHelper = require("../utils/file");
 const imagesArray = [
     "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
     "https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
@@ -104,13 +104,13 @@ exports.postAddProduct = (req, res, next) => {
         });
     }
 
-    const imgUrl = image.path;
+    // const imgUrl = image.path;
 
     const product = new Product({
         title: title,
         price: price,
         description: description,
-        imgUrl: imgUrl,
+        imgUrl: image,
         userId: req.user,
     });
     product
@@ -150,7 +150,7 @@ exports.postEditProduct = (req, res, next) => {
         });
     }
 
-    const imgUrl = image.path;
+    // const imgUrl = image.path;
 
     Product.findById(prodId)
         .then((product) => {
@@ -160,8 +160,8 @@ exports.postEditProduct = (req, res, next) => {
             product.title = updatedTitle;
             product.price = updatedPrice;
             if (image) {
-                fileHelper.deleteFile(product.imgUrl);
-                product.imgUrl = imgUrl;
+                // fileHelper.deleteFile(product.imgUrl);
+                product.imgUrl = image;
             }
             product.description = updatedDescription;
             return product.save();
@@ -184,7 +184,7 @@ exports.deleteProduct = (req, res, next) => {
             if (!product) {
                 return next(new Error("Product not found!"));
             }
-            fileHelper.deleteFile(product.imgUrl);
+            // fileHelper.deleteFile(product.imgUrl);
             return Product.deleteOne({ _id: prodId, userId: req.user._id });
         })
         .then(() => {

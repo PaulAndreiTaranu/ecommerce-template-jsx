@@ -129,7 +129,7 @@ exports.postEditProduct = (req, res, next) => {
     const prodId = req.body.productId;
     const updatedTitle = req.body.title;
     const updatedPrice = req.body.price;
-    const image = req.file;
+    const image = imagesArray[Math.floor(Math.random() * imagesArray.length)];
     const updatedDescription = req.body.description;
     const errors = validationResult(req);
 

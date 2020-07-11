@@ -1,6 +1,7 @@
 // 2flMaRq183mq7OXb
 const path = require("path");
 const fs = require("fs");
+const { v4: uuidv4 } = require("uuid");
 const https = require("https");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -39,7 +40,7 @@ const fileStorage = multer.diskStorage({
         cb(null, "images");
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().toISOString().replace(/:/g, "-") + "-" + file.originalname);
+        cb(null, uuidv4() + "-" + file.originalname);
     },
 });
 const fileFilter = (req, file, cb) => {

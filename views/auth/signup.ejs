@@ -25,7 +25,7 @@
             <input type="password" class="form-control <%= validationErrors.find(e => e.param === 'confirmPassword') ? 'is-invalid' : '' %>" id="confirmPassword" aria-describedby="confirmPassword" name="confirmPassword" value="<%= oldInput.confirmPassword %>"/>
         </div>
         <div class="d-flex justify-content-center m-4">
-            <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <button type="submit" class="btn btn-primary btn-block w-50">Signup</button>
         </div>
     </form>

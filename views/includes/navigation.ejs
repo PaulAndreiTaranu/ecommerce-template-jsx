@@ -45,7 +45,7 @@
                 <a class="nav-link <%= path==='/login' ? 'active' : '' %> btn btn-primary mr-2" href="/login">Login</a>
                 <a class="nav-link <%= path==='/signup' ? 'active' : '' %> btn btn-light" href="/signup">Signup</a>
                 <% } else { %>
-                <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <button type="submit" class="nav-link btn btn-info">Logout</button>
                 <% } %>
             </form>

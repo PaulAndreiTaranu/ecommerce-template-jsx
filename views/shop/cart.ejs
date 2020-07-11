@@ -14,7 +14,7 @@
                 <div>
                     <!-- <form action="/cart-delete-item" method="POST">
                         <input type="hidden" id="productId" name="productId" value="<%= p.productId._id %>" />
-                        <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                         <button type="submit" class="btn btn-danger">Delete product</button>
                     </form> -->
                     <a href="/checkout" class="btn btn-primary">Order now!</a>
@@ -27,7 +27,7 @@
     <%}%>
 </div>
 <!-- <form action="/create-order" method="POST" class="container-sm m-5 p-5 mx-auto d-flex justify-content-center align-items-center">
-    <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
     <button type="submit" class="btn btn-success">Complete Order!</button>
 </form> -->
 <%- include('../includes/end.ejs') %>

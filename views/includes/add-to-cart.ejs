@@ -4,7 +4,7 @@
     </div>
     <a href="/products/<%= product._id %>" class="btn btn-secondary">Details</a>
     <% if(isAuthenticated === true) {%>
-    <input type="hidden" name="_csrf" value="<%= csurfToken %>" />
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
     <button type="submit" class="btn btn-primary">Add to Cart</button>
     <%}%>
 </form>
